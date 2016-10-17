@@ -13,4 +13,73 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]  
 
+
+
+
+% Title page lengths:
+\newlength{\titlepageHeaderHeight}
+\setlength{\titlepageHeaderHeight}{3mm}
+
+\newlength{\titlepageFooterHeight}
+\setlength{\titlepageFooterHeight}{7mm}
+
+
+
+% Title page
+\defbeamertemplate*{title page}{ucla}[1][]
+{
+	\begin{tikzpicture}
+		\useasboundingbox (0,0) rectangle (\textwidth,\textheight);
+		
+		% Title:
+		\node[text width=\textwidth, anchor=south west, inner sep=0pt] at (0.0,0.6\textheight) {\inserttitle};
+		
+		% Gold bar:
+		\fill[color=uclaGold] (0,0.5\textheight) rectangle (\textwidth,0.55\textheight);
+		
+		% Author:
+		
+		% Date:
+		
+	\end{tikzpicture}
+	
+}
+
+
+
+
+% Title page command and background:
+\newcommand{\insertTitlepageSlide}{
+{
+	% Change the background:
+	\setbeamertemplate{background}{
+		\begin{tikzpicture}
+			\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+			
+			% Header:
+			\fill[color=uclaBlue] 
+				(0,\paperheight-\titlepageHeaderHeight) rectangle (\paperwidth,\paperheight);
+				
+			% Footer:
+			\fill[color=uclaBlue] 
+							(0,0) rectangle (\paperwidth,\titlepageFooterHeight);
+							
+			% Logo:
+			\node[left] at (0.99\paperwidth,0.5\titlepageFooterHeight)
+				{\includegraphics[height=0.75\titlepageFooterHeight]{logo-ucla-white}};
+				
+			% Location:
+			\node[text width=\textwidth, anchor=south west, inner sep=0pt] at (0.0,0.0) {\inserttitle};
+		\end{tikzpicture}
+	}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+}
+}
+
+% TODO:: make a new environment calls "titleframe"
+% It will draw the entire title page and allow things to be placed on top of it. 
+
 \mode<all>

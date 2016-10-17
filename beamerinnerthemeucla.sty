@@ -20,39 +20,5 @@
   \end{tikzpicture}
 }
 
-% Title page
-\defbeamertemplate*{title page}{ucla}[1][]
-{ 
-   \vskip6cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title}
-      \usebeamerfont{title}\inserttitle\par%
-    \end{beamercolorbox}%
-    \vskip0.75cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{author}
-      \usebeamerfont{author}\insertauthor%
-    \end{beamercolorbox}
-     \vskip0.2cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{date}
-      \usebeamerfont{author}\insertdate%
-    \end{beamercolorbox}
-  \vfill
-}
-
-
-\newcommand{\insertTitlepageSlide}{
-% Change the background:
-{
-\setbeamertemplate{background}{
-	\begin{tikzpicture}
-		\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-		\fill[color=uclaBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-	\end{tikzpicture}
-	}
-	\begin{frame}
-	\titlepage
-	\end{frame}
-	}
-}
-
 \mode
 <all>
