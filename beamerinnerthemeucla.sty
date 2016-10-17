@@ -1,4 +1,8 @@
+% !TEX root = example/example.tex
+
 \mode<presentation>
+
+\RequirePackage{geometry}
 
 % Items
 \setbeamertemplate{items}[square]
@@ -7,9 +11,9 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
-  \fill[color=orange] (0,0) rectangle(2.95,1.9);
-  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
+%  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
+%  \fill[color=orange] (0,0) rectangle(2.95,1.9);
+%  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
   \ifnum\thepage>1\relax%
    \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
    \fi
@@ -17,10 +21,10 @@
 }
 
 % Title page
-\defbeamertemplate*{title page}{texsx}[1][]
+\defbeamertemplate*{title page}{ucla}[1][]
 { 
    \vskip6cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title page header}
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title}
       \usebeamerfont{title}\inserttitle\par%
     \end{beamercolorbox}%
     \vskip0.75cm%
@@ -32,6 +36,22 @@
       \usebeamerfont{author}\insertdate%
     \end{beamercolorbox}
   \vfill
+}
+
+
+\newcommand{\insertTitlepageSlide}{
+% Change the background:
+{
+\setbeamertemplate{background}{
+	\begin{tikzpicture}
+		\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+		\fill[color=uclaBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+	\end{tikzpicture}
+	}
+	\begin{frame}
+	\titlepage
+	\end{frame}
+	}
 }
 
 \mode
