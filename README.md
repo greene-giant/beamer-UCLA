@@ -1,3 +1,6 @@
 # beamer-UCLA
 
-![alt text](screenShots/title.png "Title Page" width="48")
+<img src="screenShots/title.png" width="350">
+<img src="screenShots/title.png" width="350">
+<img src="screenShots/title.png" width="350">
+<img src="screenShots/title.png" width="350">
