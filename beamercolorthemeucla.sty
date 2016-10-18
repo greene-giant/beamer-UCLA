@@ -2,6 +2,14 @@
 
 \mode<presentation>
 
+% Command to print the HTML value of a color:
+\newcommand{\HTMLcolor}[1]{
+\extractcolorspec{#1}{\tempColor}
+\expandafter\convertcolorspec\tempColor{HTML}\tempColor
+\#\tempColor
+}
+
+
 % Define Colors:
 \definecolor{uclaBlue}{HTML}{3282be}
 \definecolor{uclaBlueDark}{HTML}{2a70ae}
@@ -28,6 +36,7 @@
 \setbeamercolor*{location}{fg=white}
 
 \setbeamercolor*{frametitle}{fg=white}
+\setbeamercolor*{slide number}{fg=white}
 
 \setbeamercolor*{item}{fg=uclaBlueDark}
 

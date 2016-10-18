@@ -1,14 +1,41 @@
 % !TEX root = example/example.tex
 
-\RequirePackage{fontspec}
+\RequirePackage[no-math]{fontspec}
+\RequirePackage{iffont}
 
-\setsansfont[ItalicFont={Open Sans Italic},%
-             BoldFont={Open Sans Bold},%
-             BoldItalicFont={Open Sans Bold Italic}]%
-             {Open Sans Light}
+
+%---------------------------------------------------------------------------------------------------
+% Function to print current font
+%---------------------------------------------------------------------------------------------------
+\makeatletter
+\newcommand{\printcurrentfont}{%
+    \expandafter\format@externalcurrentfont\fontname\font:\@nil
+    }
+\def\format@externalcurrentfont#1:#2\@nil{%
+    {\@ifnextchar"{\@gobble}{}#1}%
+    }
+\makeatother
+
+
+\iffontsexist{Open Sans, 
+			  Open Sans Italic, 
+			  Open Sans Bold, 
+			  Open Sans Bold Italic}{%
+	\setsansfont[ItalicFont={Open Sans Italic},%
+	             BoldFont={Open Sans Bold},%
+	             BoldItalicFont={Open Sans Bold Italic}]%
+	             {Open Sans}
+	}{
+	\PackageWarning{beamerthememeucla}{Open Sans fonts not found.}
+	\PackageWarning{beamerthememeucla}{Using default fonts.}
+	\renewcommand{\printcurrentfont}{default}
+	}
+
 
 \setbeamerfont*{title}{size=\LARGE, series=\bfseries}
 \setbeamerfont*{location}{size=\footnotesize}
 
 \setbeamerfont*{frametitle}{size=\Large, series=\bfseries}
 \setbeamerfont*{framesubtitle}{size=\normalsize, series=\normalfont}
+
+\setbeamerfont*{slide number}{size=\tiny}

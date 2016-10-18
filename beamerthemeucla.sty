@@ -2,7 +2,7 @@
 
 \mode<presentation>
 
-% Requirement
+% Required packages:
 \RequirePackage{tikz}
 
 \usetikzlibrary{positioning}
@@ -14,7 +14,7 @@
 \usefonttheme{ucla}
 
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]  
+\setbeamertemplate{blocks}[rounded][shadow=false]  
 
 
 
@@ -86,7 +86,8 @@
 			  minimum width=\textwidth, 
 			  minimum height=\titlepageBarHeight,
 			  inner sep=0pt] 
-			(titleBar) at (0.5\paperwidth, 0.5\paperheight) {};
+			(titleBar) at (0.5\paperwidth, 
+				0.5\paperheight+0.5\titlepageFooterHeight-0.5\titlepageHeaderHeight) {};
 			
 		% Title:
 		\node[align=left, 
@@ -123,6 +124,34 @@
 	\end{frame}
 }
 }
+
+
+\newcommand{\insertLastSlide}{
+{
+	% Remove the footline:
+	\setbeamertemplate{footline}{}
+	
+	% Change the background:
+	\setbeamertemplate{background}{
+	\begin{tikzpicture}
+		\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+		
+		% Background:
+		\fill[color=uclaBlueDark] 
+			(0,0) rectangle (\paperwidth,\paperheight);
+						
+		% Logo:
+		\node[inner sep=6pt, white, draw, very thick, fill=uclaBlue] at (0.25\paperwidth,0.5\paperheight)
+			{\includegraphics[height=1.0cm]{logo-ucla-white}};
+	\end{tikzpicture}
+	}
+	
+	\begin{frame}
+	
+	\end{frame}
+}
+}
+
 
 % TODO:: make a new environment calls "titleframe"
 % It will draw the entire title page and allow things to be placed on top of it. 

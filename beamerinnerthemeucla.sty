@@ -2,11 +2,77 @@
 
 \mode<presentation>
 
-\RequirePackage{geometry}
+\usetikzlibrary{calc, positioning, shapes.geometric}
 
-% Items
-\setbeamertemplate{items}[square]
-\setbeamertemplate{sections/subsections in toc}[square]
+
+%---------------------------------------------------------------------------------------------------
+% Generate item shapes:
+%---------------------------------------------------------------------------------------------------
+\def\baseline{-0.1em}
+
+\newlength{\itemLocation}
+\setlength{\itemLocation}{0.55em}
+
+\newlength{\squareSize}
+\setlength{\squareSize}{0.45em}
+
+\newlength{\circleRadius}
+\setlength{\circleRadius}{0.45em}
+
+\newlength{\triangleSize}
+\setlength{\triangleSize}{0.55em}
+
+
+% Square item:
+\tikzstyle{itemSquare}=[rectangle, inner sep=0, minimum size=\squareSize, fill=fg]
+        
+\newcommand{\itemSquare}[0]{%
+    \protect\tikz[baseline=\baseline]{
+        \protect \node[itemSquare] at (0, 0.5\itemLocation) {};}}
+        
+% Circle item:
+\tikzstyle{itemCircle}=[circle,inner sep=0,minimum size=\circleRadius,fill=fg]
+        
+\newcommand{\itemCircle}[0]{%
+    \protect\tikz[baseline=\baseline]{
+        \protect \node[itemCircle] at (0, 0.5\itemLocation) {};}}
+        
+% Triangle item:
+\tikzstyle{itemTriangle}=[regular polygon, regular polygon sides=3, rotate=-90,
+                          inner sep=0,minimum size=\triangleSize,fill=fg]
+                          
+\newcommand{\itemTriangle}[0]{%
+    \protect\tikz[baseline=\baseline]{
+        \protect \node[itemTriangle] at (0, 0.5\itemLocation) {};}}
+
+
+
+%---------------------------------------------------------------------------------------------------
+% Specify items:
+%---------------------------------------------------------------------------------------------------
+\setbeamertemplate{itemize items}{\usebeamercolor[fg]{item}\itemCircle} 
+\setbeamertemplate{itemize subitem}{\usebeamercolor[fg]{item}\itemTriangle} 
+\setbeamertemplate{itemize subsubitem}{\usebeamercolor[fg]{item}\itemSquare} 
+
+% Set the indentation for itemize bullets:
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{1.8\labelsep}
+
+\settowidth{\leftmarginii}{\usebeamertemplate{itemize subitem}}
+\addtolength{\leftmarginii}{1.4\labelsep}
+
+\settowidth{\leftmarginiii}{\usebeamertemplate{itemize subsubitem}}
+\addtolength{\leftmarginiii}{1.4\labelsep}
+
+
+
+
+
+
+
+
+
+
 
 \setbeamertemplate{background}{
 \begin{tikzpicture}

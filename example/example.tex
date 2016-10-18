@@ -1,11 +1,23 @@
 \documentclass{beamer}
 
+\usepackage{lipsum}
+
+% Load theme:
 \usetheme{ucla}
 
+
+% Set title page values:
 \title{There Is No Largest Prime Number}
 \date{July 9, 2016}
 \author{Euclid of Alexandria \texttt{euclid@alexandria.edu}}
 \location{Some conference}
+
+
+% Turn on slide numbers:
+\showSlideNumber{}
+
+
+
 
 
 \begin{document}
@@ -19,24 +31,67 @@
 
 
 \begin{frame} 
-\frametitle{There Is No Largest Prime Number} 
-\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
-\begin{theorem}
-There is no largest prime number. \end{theorem} 
-\begin{enumerate} 
-\item<1-| alert@1> Suppose $p$ were the largest prime number. 
-\item<2-> Let $q$ be the product of the first $p$ numbers. 
-\item<3-> Then $q+1$ is not divisible by any of them. 
-\item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
-number not in the first $p$ numbers.
-\end{enumerate}
+\frametitle{A font sample} 
+\framesubtitle{\printcurrentfont} 
+
+Some sample text
+\begin{itemize}
+	\item A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	\item a b c d e f g h i j k l m n o p q r s t u v w x y z
+	\item 1 2 3 4 5 6 7 8 9 0
+	\item Equations:
+	\begin{itemize}
+		\item $1 2 3 4 5 6 7 8 9 0$
+		\item $\alpha \beta \gamma \delta \omega \text{A} \text{B} \Gamma \Delta \Omega$
+		\item $\sin$, $\cos$, $\ln$, $+ - * /$
+	\end{itemize}
+	
+	\begin{equation}
+		d\left( x, y \right) = \sum_{n=1}^N d_n \, b_n \left( x, y \right)
+	\end{equation}
+\end{itemize}
+
 \end{frame}
 
-\begin{frame}{A longer title}
-\begin{itemize}
-\item one
-\item two
-\end{itemize}
+
+
+\begin{frame}[fragile]
+\frametitle{Colors provided by this template}
+\centering
+\tikzstyle{colorSampleNodeTemplate} = [rectangle,
+                               align=center, 
+                               text width = 2.6cm,
+                               minimum height = 1.6cm,
+                               rounded corners=0.2cm]
+                               
+\newcommand{\colorSampleNode}[2]{
+    \node[colorSampleNodeTemplate, fill=#1, text=#2] 
+        {#1\\\HTMLcolor{#1}};
+        }
+
+\begin{tikzpicture}
+    \matrix[row sep=0.4cm, column sep=0.4cm] at (0,0)
+    {
+        \colorSampleNode{uclaBlue}{white} &
+        \colorSampleNode{uclaBlueDark}{white}
+        \\
+        \colorSampleNode{uclaGold}{black} &
+        \colorSampleNode{uclaGoldDark}{black}
+        \\
+    };
+\end{tikzpicture}
+
 \end{frame}
+
+
+
+\begin{frame} 
+\frametitle{Two line titles are created automatically\\or with a \textbackslash\textbackslash}  
+\lipsum[1]
+\end{frame}
+
+
+% Insert a last slide to hide backups
+\insertLastSlide
 
 \end{document}

@@ -2,6 +2,10 @@
 
 \mode<presentation>
 
+
+%-------------------------------------------------------------------------------------------------
+% Define headline and foot line widths
+%-------------------------------------------------------------------------------------------------
 \newlength{\footlineWidth}
 \setlength{\footlineWidth}{3mm}
 
@@ -10,7 +14,9 @@
 \setlength{\headlineWidth}{15mm}
 
 
+%-------------------------------------------------------------------------------------------------
 % Frame title
+%-------------------------------------------------------------------------------------------------
 \defbeamertemplate*{frametitle}{ucla}[1][]
 {
 \nointerlineskip
@@ -25,7 +31,7 @@
 	% Title:
 	\node[align=left,
 		  text width=\textwidth] at (0.5\paperwidth, 0.5\headlineWidth+0.25\footlineWidth)
-		{\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\\
+		{\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\baselineskip=15pt\insertframetitle\\
 		 \usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par};
 		
 	\end{tikzpicture}
@@ -33,22 +39,36 @@
 }
 
 
-% Headline:
-%\defbeamertemplate*{frametitle}{ucla}[1][]
-%{
-%	\begin{tikzpicture}
-%	\useasboundingbox[fill=uclaBlueDark] (0,0) rectangle (\paperwidth,\headlineWidth);
-%	\fill[uclaGoldDark] (0,0) rectangle (\paperwidth,0.5\footlineWidth);
-%	\end{tikzpicture}
-%}
 
-
+%-------------------------------------------------------------------------------------------------
 % Footer:
+%-------------------------------------------------------------------------------------------------
+% Variables to control slide number:
+\newif\ifslidenumber
+\slidenumberfalse
+\newcommand{\showSlideNumber}{\slidenumbertrue}
+
+\newlength{\slideNumberWidth}
+\setlength{\slideNumberWidth}{0.75cm}
+
 \setbeamertemplate{footline}
 {
 	\begin{tikzpicture}
+	% Bars:
 	\useasboundingbox[fill=uclaBlueDark] (0,0) rectangle (\paperwidth,\footlineWidth);
 	\fill[uclaGoldDark] (0,0.5\footlineWidth) rectangle (\paperwidth,\footlineWidth);
+	
+	% Slide number:
+	\ifslidenumber
+		\fill[uclaBlueDark] (\paperwidth,0.0) -- 
+							++(0.0,\footlineWidth) --
+							++(-\slideNumberWidth, 0.0)  --
+							++(225:1.4\footlineWidth) --
+							cycle;
+		\node[left, 
+			  font={\usebeamercolor[fg]{slide number}\usebeamerfont{slide number}}] 
+			at (0.99\paperwidth,0.5\footlineWidth) {\insertframenumber};
+	\fi
 	\end{tikzpicture}
 }
 
