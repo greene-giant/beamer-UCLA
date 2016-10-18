@@ -5,10 +5,13 @@
 % Requirement
 \RequirePackage{tikz}
 
+\usetikzlibrary{positioning}
+
 % Settings
 \useinnertheme{ucla}
 \useoutertheme{ucla}
 \usecolortheme{ucla}
+\usefonttheme{ucla}
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]  
@@ -23,7 +26,16 @@
 \newlength{\titlepageFooterHeight}
 \setlength{\titlepageFooterHeight}{7mm}
 
+\newlength{\titlepageBarHeight}
+\setlength{\titlepageBarHeight}{1.5mm}
 
+
+
+\newcommand{\insertLocation}[0]{Location}
+\newcommand{\location}[1]{\renewcommand{\insertLocation}[0]{#1}}
+
+
+\setbeamersize{text margin left=.5cm, text margin right=.5cm} 
 
 % Title page
 \defbeamertemplate*{title page}{ucla}[1][]
@@ -49,32 +61,64 @@
 
 
 % Title page command and background:
-\newcommand{\insertTitlepageSlide}{
+\newcommand{\insertTitleSlide}{
 {
 	% Change the background:
 	\setbeamertemplate{background}{
-		\begin{tikzpicture}
-			\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+	\begin{tikzpicture}
+		\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+		
+		% Header:
+		\fill[color=uclaBlueDark] 
+			(0,\paperheight-\titlepageHeaderHeight) rectangle (\paperwidth,\paperheight);
 			
-			% Header:
-			\fill[color=uclaBlue] 
-				(0,\paperheight-\titlepageHeaderHeight) rectangle (\paperwidth,\paperheight);
-				
-			% Footer:
-			\fill[color=uclaBlue] 
-							(0,0) rectangle (\paperwidth,\titlepageFooterHeight);
-							
-			% Logo:
-			\node[left] at (0.99\paperwidth,0.5\titlepageFooterHeight)
-				{\includegraphics[height=0.75\titlepageFooterHeight]{logo-ucla-white}};
-				
-			% Location:
-			\node[text width=\textwidth, anchor=south west, inner sep=0pt] at (0.0,0.0) {\inserttitle};
-		\end{tikzpicture}
+		% Footer:
+		\fill[color=uclaBlueDark] 
+						(0,0) rectangle (\paperwidth,\titlepageFooterHeight);
+						
+		% Logo:
+		\node[left] at (0.99\paperwidth,0.5\titlepageFooterHeight)
+			{\includegraphics[height=0.75\titlepageFooterHeight]{logo-ucla-white}};
+			
+		% Gold bar:
+		\node[fill=uclaGoldDark, 
+			  minimum width=\textwidth, 
+			  minimum height=\titlepageBarHeight,
+			  inner sep=0pt] 
+			(titleBar) at (0.5\paperwidth, 0.5\paperheight) {};
+			
+		% Title:
+		\node[align=left, 
+			  text width=\textwidth, 
+			  anchor=south, 
+			  above=0.0 of titleBar, 
+			  font={\usebeamercolor[fg]{title}\usebeamerfont{title}}] 
+			(title) {\inserttitle\par};
+			
+		% Author:
+		\node[align=left, 
+			  text width=\textwidth, 
+			  anchor=north, 
+			  below=0.0 of titleBar] 
+			(author) {\insertauthor};
+			
+		% Date:
+		\node[align=left, 
+			  text width=\textwidth, 
+			  anchor=north, 
+			  below=0.0 of author] 
+			(date) {\insertdate};
+			
+		% Location:
+		\node[text width=\textwidth, 
+			  anchor=south west,
+			  font={\usebeamercolor[fg]{location}\usebeamerfont{location}}] 
+			at (0.0,0.0) {\insertLocation};
+	\end{tikzpicture}
 	}
 	
 	\begin{frame}
-		\titlepage
+	
 	\end{frame}
 }
 }
