@@ -41,18 +41,16 @@
 \defbeamertemplate*{title page}{ucla}[1][]
 {
 	\begin{tikzpicture}
-		\useasboundingbox (0,0) rectangle (\textwidth,\textheight);
-		
-		% Title:
-		\node[text width=\textwidth, anchor=south west, inner sep=0pt] at (0.0,0.6\textheight) {\inserttitle};
-		
-		% Gold bar:
-		\fill[color=uclaGold] (0,0.5\textheight) rectangle (\textwidth,0.55\textheight);
-		
-		% Author:
-		
-		% Date:
-		
+	\useasboundingbox (0,0) rectangle (\textwidth,\textheight);
+	
+	\node[draw=uclaBlueDark, very thick, rounded corners=10pt,
+		  align=center,
+		  text width=0.75\textwidth]
+		at (0.5\textwidth, 0.5\textheight)
+		{The command \texttt{\textbackslash titlepage} is not supported\\[1.0em]
+		Use the command \texttt{\textbackslash insertTitleSlide} instead.\\
+		This command does not go in a frame environment.};
+	
 	\end{tikzpicture}
 	
 }
