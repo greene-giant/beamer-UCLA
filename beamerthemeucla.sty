@@ -31,7 +31,15 @@
 
 
 
-\newcommand{\insertLocation}[0]{Location}
+
+% New commands:
+\newcommand{\printCommand}[1]{\texttt{\textbackslash#1}}
+
+\title{Set title with \printCommand{title\{\}}}
+\author{Set author with \printCommand{author\{\}}}
+\date{Set date with \printCommand{date\{\}}}
+
+\newcommand{\insertLocation}[0]{Set location with \printCommand{location\{\}}}
 \newcommand{\location}[1]{\renewcommand{\insertLocation}[0]{#1}}
 
 
@@ -101,14 +109,16 @@
 		\node[align=left, 
 			  text width=\textwidth, 
 			  anchor=north, 
-			  below=0.0 of titleBar] 
+			  below=0.0 of titleBar,
+			  font={\usebeamercolor[fg]{author}\usebeamerfont{author}}] 
 			(author) {\insertauthor};
 			
 		% Date:
 		\node[align=left, 
 			  text width=\textwidth, 
 			  anchor=north, 
-			  below=0.0 of author] 
+			  below=0.0 of author,
+			  font={\usebeamercolor[fg]{date}\usebeamerfont{date}}] 
 			(date) {\insertdate};
 			
 		% Location:
