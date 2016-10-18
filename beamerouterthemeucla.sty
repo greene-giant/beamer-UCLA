@@ -2,23 +2,54 @@
 
 \mode<presentation>
 
+\newlength{\footlineWidth}
+\setlength{\footlineWidth}{3mm}
+
+
+\newlength{\headlineWidth}
+\setlength{\headlineWidth}{15mm}
+
+
 % Frame title
 \defbeamertemplate*{frametitle}{ucla}[1][]
 {
-\vskip1cm%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
-  \begin{tikzpicture}
-  \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
-  \fill[orange] (0,0) rectangle(2.95,1.2);
-  \fill[blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.2);
-   \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west, white,font=\large] at (3.2,0.61){\insertframetitle};}
-      \else%
-      {\node[anchor= west, white,font=\large] at (3.2,0.81){\insertframetitle};%
-       \node[anchor= west, white,font=\small] at (3.2,0.41){\insertframesubtitle};}%
-      \fi
-  \end{tikzpicture}
-  \end{beamercolorbox}
+\nointerlineskip
+\begin{beamercolorbox}[wd=\paperwidth, sep=0pt, ht=\headlineWidth]{frametitle} 
+	\begin{tikzpicture}
+	% Blue background:
+	\useasboundingbox[fill=uclaBlueDark] (0,0) rectangle (\paperwidth,\headlineWidth);
+
+	% Gold bar:
+	\fill[uclaGoldDark] (0,0) rectangle (\paperwidth,0.5\footlineWidth);
+	
+	% Title:
+	\node[align=left,
+		  text width=\textwidth] at (0.5\paperwidth, 0.5\headlineWidth+0.25\footlineWidth)
+		{\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\\
+		 \usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par};
+		
+	\end{tikzpicture}
+\end{beamercolorbox}
+}
+
+
+% Headline:
+%\defbeamertemplate*{frametitle}{ucla}[1][]
+%{
+%	\begin{tikzpicture}
+%	\useasboundingbox[fill=uclaBlueDark] (0,0) rectangle (\paperwidth,\headlineWidth);
+%	\fill[uclaGoldDark] (0,0) rectangle (\paperwidth,0.5\footlineWidth);
+%	\end{tikzpicture}
+%}
+
+
+% Footer:
+\setbeamertemplate{footline}
+{
+	\begin{tikzpicture}
+	\useasboundingbox[fill=uclaBlueDark] (0,0) rectangle (\paperwidth,\footlineWidth);
+	\fill[uclaGoldDark] (0,0.5\footlineWidth) rectangle (\paperwidth,\footlineWidth);
+	\end{tikzpicture}
 }
 
 

@@ -41,7 +41,7 @@
 \defbeamertemplate*{title page}{ucla}[1][]
 {
 	\begin{tikzpicture}
-	\useasboundingbox (0,0) rectangle (\textwidth,\textheight);
+	\useasboundingbox (0,0) rectangle (\textwidth,0.98\textheight);
 	
 	\node[draw=uclaBlueDark, very thick, rounded corners=10pt,
 		  align=center,
@@ -61,6 +61,9 @@
 % Title page command and background:
 \newcommand{\insertTitleSlide}{
 {
+	% Remove the footline:
+	\setbeamertemplate{footline}{}
+	
 	% Change the background:
 	\setbeamertemplate{background}{
 	\begin{tikzpicture}

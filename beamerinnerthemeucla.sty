@@ -9,15 +9,12 @@
 \setbeamertemplate{sections/subsections in toc}[square]
 
 \setbeamertemplate{background}{
-  \begin{tikzpicture}
-  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-%  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
-%  \fill[color=orange] (0,0) rectangle(2.95,1.9);
-%  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
-  \ifnum\thepage>1\relax%
-   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
-   \fi
-  \end{tikzpicture}
+\begin{tikzpicture}
+	\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+	
+	% Just use a white background:
+	\fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+\end{tikzpicture}
 }
 
 \mode
