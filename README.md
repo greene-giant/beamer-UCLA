@@ -1,8 +1,8 @@
 # beamer-UCLA :: An unofficial UCLA beamer theme
 
-![](screenShots/title.png =250x)
-![](screenShots/color.png =250x)
-![](screenShots/last.png =250x)
+<img src="screenShots/title.png" alt="title" class="inline" width="250"/>
+<img src="screenShots/color.png" alt="color" class="inline" width="250"/>
+<img src="screenShots/last.png" alt="last" class="inline" width="250"/>
 
 ## Requirements:
 * Lualatex or xelatex - The template utilizes the `fontspec` package, which requires lualatex or xelatex. They should have been installed with Latex.
