@@ -17,14 +17,22 @@
 \makeatother
 
 
+
+%---------------------------------------------------------------------------------------------------
+% Check for font
+%--------------------------------------------------------------------------------------------------
 \iffontsexist{Open Sans, 
 			  Open Sans Italic, 
 			  Open Sans Bold, 
 			  Open Sans Bold Italic}{%
-	\setsansfont[ItalicFont={Open Sans Italic},%
-	             BoldFont={Open Sans Bold},%
-	             BoldItalicFont={Open Sans Bold Italic}]%
-	             {Open Sans}
+	%\setsansfont[ItalicFont={Open Sans Italic},%
+	%             BoldFont={Open Sans Bold},%
+	%             BoldItalicFont={Open Sans Bold Italic}]%
+	%             {Open Sans}
+	\setsansfont[ItalicFont={Open Sans Light Italic},%
+		             BoldFont={Open Sans},%
+		             BoldItalicFont={Open Sans Italic}]%
+		             {Open Sans Light}
 	}{
 	\PackageWarning{beamerthememeucla}{Open Sans fonts not found.}
 	\PackageWarning{beamerthememeucla}{Using default fonts.}
@@ -32,12 +40,18 @@
 	}
 
 
-\setbeamerfont*{title}{size=\LARGE, series=\bfseries}
-\setbeamerfont*{location}{size=\footnotesize}
-\setbeamerfont*{author}{size=\normalsize}
-\setbeamerfont*{date}{size=\small}
 
+
+%---------------------------------------------------------------------------------------------------
+% Function to print current font
+%--------------------------------------------------------------------------------------------------
+% Title page font:
+\setbeamerfont*{title}{size=\Large, series=\bfseries}
+\setbeamerfont*{location}{size=\scriptsize}
+\setbeamerfont*{author}{size=\small}
+\setbeamerfont*{date}{size=\footnotesize}
+
+% Slide font:
 \setbeamerfont*{frametitle}{size=\Large, series=\bfseries}
 \setbeamerfont*{framesubtitle}{size=\normalsize, series=\normalfont}
-
 \setbeamerfont*{slide number}{size=\tiny}
